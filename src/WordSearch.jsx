@@ -113,7 +113,24 @@ function generateBoard(words) {
 }
 
 export default function WordSearch({ onBack }) {
-  const [words] = useState(() => pickWords(10));
+  const palette = [
+    "#FFE5E5",
+    "#FFF4CC",
+    "#E5FFE5",
+    "#E5F4FF",
+    "#EDE5FF",
+    "#FFE5F4",
+    "#F0FFE5",
+    "#E5FFFA",
+    "#FFF0E5",
+    "#E5F0FF",
+  ];
+
+  const [words] = useState(() => {
+    const chosen = pickWords(10);
+    // attach a unique color
+    return chosen.map((w, idx) => ({ ...w, color: palette[idx % palette.length] }));
+  });
   const [boardData] = useState(() => generateBoard(words));
   const [found, setFound] = useState({}); // word -> true
   const [startCell, setStartCell] = useState(null);
@@ -187,7 +204,7 @@ export default function WordSearch({ onBack }) {
             style={{
               padding: 6,
               borderRadius: 6,
-              background: found[w.word] ? "#d4ffd4" : "#eee",
+              background: found[w.word] ? w.color : "#eee",
               minWidth: 80,
             }}
           >
@@ -224,9 +241,14 @@ export default function WordSearch({ onBack }) {
             {boardData.grid.map((rowArr, rowIdx) => (
               <tr key={rowIdx}>
                 {rowArr.map((ch, colIdx) => {
-                  const isFoundCell = words.some(
-                    (w) => found[w.word] && boardData.placements[w.word].some(([r, c]) => r === rowIdx && c === colIdx)
-                  );
+                  // check if this cell belongs to a found word and get its color
+                  let cellColor = null;
+                  for (const w of words) {
+                    if (found[w.word] && boardData.placements[w.word].some(([r, c]) => r === rowIdx && c === colIdx)) {
+                      cellColor = w.color;
+                      break;
+                    }
+                  }
                   return (
                     <td
                       key={colIdx}
@@ -238,7 +260,7 @@ export default function WordSearch({ onBack }) {
                         border: "1px solid #999",
                         textAlign: "center",
                         userSelect: "none",
-                        background: isFoundCell ? "#b3e5ff" : "#fff",
+                        background: cellColor ? cellColor : "#fff",
                         fontWeight: "bold",
                         fontSize: 16,
                       }}
