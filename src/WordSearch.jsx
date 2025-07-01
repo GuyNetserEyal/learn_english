@@ -34,7 +34,7 @@ const VOCAB = [
   { word: "SNOW", hebrew: "סְנוֹו", icon: "❄️" },
 ];
 
-const BOARD_SIZE = 12;
+const BOARD_SIZE = 10;
 
 function pickWords(count = 10) {
   const copy = [...VOCAB];
@@ -204,6 +204,14 @@ export default function WordSearch({ onBack }) {
                 style={{ fontSize: 12, marginTop: 4, cursor: "pointer" }}
               >
                 השמע
+              </button>
+            )}
+            {!found[w.word] && (
+              <button
+                onClick={() => setFound((prev) => ({ ...prev, [w.word]: true }))}
+                style={{ fontSize: 12, marginTop: 4, cursor: "pointer" }}
+              >
+                לא מצאתי
               </button>
             )}
           </div>
