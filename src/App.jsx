@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Games from "./Games.jsx";
 import WordSearch from "./WordSearch.jsx";
+import 'pepjs';
 
 const LETTERS = [
   { letter: "A", hebrewName: "אֵיי", word: "Apple", hebrewWord: "אֶפֶּל", icon: "🍎" },
