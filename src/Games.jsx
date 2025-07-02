@@ -1,48 +1,5 @@
 import React, { useState } from "react";
-
-const VOCAB = [
-  { word: "APPLE", hebrew: "אַפֶּל", icon: "🍎" },
-  { word: "BANANA", hebrew: "בָּנָנָה", icon: "🍌" },
-  { word: "ORANGE", hebrew: "אוֹרֶנְג'", icon: "🍊" },
-  { word: "GRAPE", hebrew: "גְרֵייפּ", icon: "🍇" },
-  { word: "PEAR", hebrew: "פֵּאֵר", icon: "🍐" },
-  { word: "PEACH", hebrew: "פִּיץ'", icon: "🍑" },
-  { word: "CHERRY", hebrew: "צֶ'רִי", icon: "🍒" },
-  { word: "LEMON", hebrew: "לֶמוֹן", icon: "🍋" },
-  { word: "MANGO", hebrew: "מַנְגוֹ", icon: "🥭" },
-  { word: "KIWI", hebrew: "קִיוִּי", icon: "🥝" },
-  { word: "CARROT", hebrew: "קֶרֶט", icon: "🥕" },
-  { word: "TOMATO", hebrew: "טוֹמַטוֹ", icon: "🍅" },
-  { word: "POTATO", hebrew: "פּוֹטֵייטוֹ", icon: "🥔" },
-  { word: "BREAD", hebrew: "בְּרֶאד", icon: "🍞" },
-  { word: "PIZZA", hebrew: "פִּיצָה", icon: "🍕" },
-  { word: "MILK", hebrew: "מִילְק", icon: "🥛" },
-  { word: "EGG", hebrew: "אֶג", icon: "🥚" },
-  { word: "WATER", hebrew: "ווֹטֶר", icon: "💧" },
-  { word: "JUICE", hebrew: "ג'וּס", icon: "🧃" },
-  { word: "CAT", hebrew: "קַט", icon: "🐱" },
-  { word: "DOG", hebrew: "דּוֹג", icon: "🐶" },
-  { word: "LION", hebrew: "לַיּוֹן", icon: "🦁" },
-  { word: "TIGER", hebrew: "טַייְגֶר", icon: "🐯" },
-  { word: "MONKEY", hebrew: "מַנְקִי", icon: "🐒" },
-  { word: "ZEBRA", hebrew: "זִיבְּרָה", icon: "🦓" },
-  { word: "SUN", hebrew: "סַן", icon: "☀️" },
-  { word: "MOON", hebrew: "מוּן", icon: "🌙" },
-  { word: "STAR", hebrew: "סְטַאר", icon: "⭐" },
-  { word: "RAIN", hebrew: "רֵיין", icon: "🌧️" },
-  { word: "SNOW", hebrew: "סְנוֹו", icon: "❄️" },
-  { word: "CAR", hebrew: "קַאר", icon: "🚗" },
-  { word: "BUS", hebrew: "בַּאס", icon: "🚌" },
-  { word: "BIKE", hebrew: "בַּייְק", icon: "🚲" },
-  { word: "BOAT", hebrew: "בּוֹאט", icon: "🚤" },
-  { word: "PLANE", hebrew: "פְּלֵיין", icon: "✈️" },
-  { word: "BOOK", hebrew: "בּוּק", icon: "📖" },
-  { word: "PEN", hebrew: "פֶּן", icon: "🖊️" },
-  { word: "BED", hebrew: "בֶּד", icon: "🛏️" },
-  { word: "HAT", hebrew: "הַט", icon: "🎩" },
-  { word: "SHOE", hebrew: "שׁוּ", icon: "👟" },
-  // ... (you can add more up to 100)
-];
+import VOCAB from "./vocab.js";
 
 function getRandomSession(size = 10) {
   const copy = [...VOCAB];
