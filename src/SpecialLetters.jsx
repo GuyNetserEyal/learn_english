@@ -379,7 +379,7 @@ export default function SpecialLetters({ onBack }) {
     const rule = CASES.find((c) => c.key === selected);
     return (
       <div dir="rtl" className="screen-container" style={{ gap: 24 }}>
-        <button onClick={() => setSelected(null)} className="primary-button" style={{ position: "absolute", top: 20, left: 20 }}>
+        <button onClick={() => setSelected(null)} className="primary-button back-button">
           חזרה
         </button>
         <div className="detail-card" style={{ maxWidth: 500 }}>
@@ -406,7 +406,7 @@ export default function SpecialLetters({ onBack }) {
 
   return (
     <div dir="rtl" className="screen-container">
-      <button onClick={onBack} className="primary-button" style={{ position: "absolute", top: 20, left: 20 }}>חזרה</button>
+      <button onClick={onBack} className="primary-button back-button">חזרה</button>
       <h1 style={{ fontSize: 36, marginBottom: 24 }}>אותיות מיוחדות</h1>
       <div className="rules-grid">
         {CASES.map((c) => {

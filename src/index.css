@@ -1,5 +1,11 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --color-primary: #2575fc;
+  --color-secondary: #6a11cb;
+  --color-dark: #333;
+  --color-light: #ffffff;
+  --color-muted: #f0f0f0;
+
+  font-family: "Rubik", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -75,8 +81,8 @@ button:focus-visible {
   justify-content: center;
   text-align: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-  color: #fff;
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+  color: var(--color-light);
   padding: 2rem;
 }
 
@@ -94,9 +100,9 @@ button:focus-visible {
   font-size: 1.5rem;
   padding: 1rem 2.5rem;
   background: rgba(255, 255, 255, 0.15);
-  border: 2px solid #fff;
+  border: 2px solid var(--color-light);
   border-radius: 12px;
-  color: #fff;
+  color: var(--color-light);
   transition: background 0.3s;
 }
 
@@ -110,14 +116,14 @@ button:focus-visible {
   font-size: 28px;
   border-radius: 12px;
   cursor: pointer;
-  background: #fff;
-  border: 2px solid #333;
+  background: var(--color-light);
+  border: 2px solid var(--color-dark);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, background 0.3s;
 }
 
 .menu-card:hover {
-  background: #f0f0f0;
+  background: var(--color-muted);
   transform: translateY(-2px);
 }
 
@@ -126,8 +132,8 @@ button:focus-visible {
   width: 180px;
   padding: 20px;
   border-radius: 12px;
-  border: 2px solid #333;
-  background: #fff;
+  border: 2px solid var(--color-dark);
+  background: var(--color-light);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -138,7 +144,7 @@ button:focus-visible {
 }
 
 .game-tile:hover {
-  background: #f0f0f0;
+  background: var(--color-muted);
   transform: translateY(-2px);
 }
 
@@ -160,13 +166,20 @@ button:focus-visible {
   font-size: 18px;
   border-radius: 10px;
   cursor: pointer;
-  background: #fff;
-  border: 2px solid #333;
+  background: var(--color-light);
+  border: 2px solid var(--color-dark);
   transition: background 0.3s;
 }
 
 .primary-button:hover {
-  background: #f0f0f0;
+  background: var(--color-muted);
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 18px;
 }
 
 .score-banner {
@@ -186,7 +199,7 @@ button:focus-visible {
   width: 90px;
   height: 90px;
   border-radius: 16px;
-  border: 2px solid #333;
+  border: 2px solid var(--color-dark);
   background: #f7f7f7;
   cursor: pointer;
   display: flex;
@@ -198,7 +211,7 @@ button:focus-visible {
 }
 
 .letter-cell:hover {
-  background: #ffffff;
+  background: var(--color-light);
   transform: translateY(-2px);
 }
 
@@ -213,7 +226,7 @@ button:focus-visible {
   width: 140px;
   height: 140px;
   border-radius: 16px;
-  border: 2px solid #333;
+  border: 2px solid var(--color-dark);
   background: #f7f7f7;
   cursor: pointer;
   display: flex;
@@ -225,7 +238,7 @@ button:focus-visible {
 }
 
 .pair-card:hover {
-  background: #ffffff;
+  background: var(--color-light);
   transform: translateY(-2px);
 }
 
@@ -240,7 +253,7 @@ button:focus-visible {
   width: 160px;
   height: 100px;
   border-radius: 14px;
-  border: 2px solid #333;
+  border: 2px solid var(--color-dark);
   background: #fafafa;
   cursor: pointer;
   display: flex;
@@ -254,13 +267,13 @@ button:focus-visible {
 }
 
 .rule-card:hover {
-  background: #ffffff;
+  background: var(--color-light);
   transform: translateY(-2px);
 }
 
 .detail-card {
-  background: #ffffff;
-  border: 2px solid #333;
+  background: var(--color-light);
+  border: 2px solid var(--color-dark);
   border-radius: 16px;
   padding: 32px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -270,7 +283,7 @@ button:focus-visible {
 /* ----- Games ----- */
 .game-card {
   background: #ffffff;
-  border: 2px solid #333;
+  border: 2px solid var(--color-dark);
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -342,8 +355,8 @@ button:focus-visible {
   padding: 14px 24px;
   font-size: 28px;
   border-radius: 12px;
-  border: 2px solid #333;
-  background: #fff;
+  border: 2px solid var(--color-dark);
+  background: var(--color-light);
   min-width: 64px;
   cursor: pointer;
   transition: background 0.3s;
@@ -351,12 +364,12 @@ button:focus-visible {
 
 .option-button.correct {
   background: #4caf50;
-  color: #fff;
+  color: var(--color-light);
 }
 
 .option-button.wrong {
   background: #f44336;
-  color: #fff;
+  color: var(--color-light);
 }
 
 .masked-word {
@@ -368,7 +381,7 @@ button:focus-visible {
 
 .blank {
   width: 48px;
-  border-bottom: 4px solid #333;
+  border-bottom: 4px solid var(--color-dark);
   display: inline-block;
   margin: 0 4px;
 }
@@ -376,4 +389,21 @@ button:focus-visible {
 .game-tile .desc {
   font-size: 14px;
   color: #555;
+}
+
+@media (max-width: 600px) {
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .menu-card,
+  .game-tile {
+    width: 100%;
+    max-width: 260px;
+  }
+  .rules-grid,
+  .pairs-grid,
+  .letters-grid {
+    gap: 12px;
+  }
 }

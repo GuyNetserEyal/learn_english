@@ -181,7 +181,7 @@ export default function WordSearch({ onBack }) {
 
   return (
     <div dir="rtl" className="screen-container" style={{ padding: 16, gap: 12 }}>
-      <button onClick={onBack} className="primary-button" style={{ position: "absolute", top: 10, left: 10, fontSize: 18 }}>
+      <button onClick={onBack} className="primary-button back-button">
         חזרה לדף הבית
       </button>
       <h2>חפש את המילים הבאות</h2>

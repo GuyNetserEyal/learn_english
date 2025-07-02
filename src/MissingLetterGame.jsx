@@ -179,7 +179,7 @@ export default function MissingLetterGame({ onBack }) {
   if (level === null) {
     return (
       <div dir="rtl" className="screen-container">
-        <button onClick={onBack} className="primary-button" style={{ position: "absolute", top: 20, left: 20 }}>
+        <button onClick={onBack} className="primary-button back-button">
           חזרה
         </button>
         <h1 style={{ fontSize: 48, marginBottom: 32 }}>בחרו רמת קושי</h1>
@@ -204,7 +204,7 @@ export default function MissingLetterGame({ onBack }) {
   if (index >= session.length) {
     return (
       <div dir="rtl" className="screen-container">
-        <button onClick={onBack} className="primary-button" style={{ position: "absolute", top: 20, left: 20 }}>
+        <button onClick={onBack} className="primary-button back-button">
           חזרה
         </button>
         <div className="game-card">
@@ -233,7 +233,7 @@ export default function MissingLetterGame({ onBack }) {
 
   return (
     <div dir="rtl" className="screen-container">
-      <button onClick={onBack} className="primary-button" style={{ position: "absolute", top: 20, left: 20 }}>חזרה</button>
+      <button onClick={onBack} className="primary-button back-button">חזרה</button>
       <h2 className="score-banner" style={{ fontSize: 20 }}>מילה {index + 1} מתוך {session.length}</h2>
       <div className="large-icon">{q.wordObj.icon}</div>
       <div style={{ fontSize: 32, marginBottom: 8 }}>{q.wordObj.hebPron}</div>

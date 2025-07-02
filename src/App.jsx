@@ -57,8 +57,7 @@ function App() {
       <div dir="rtl" className="screen-container" style={{ gap: 32 }}>
         <button
           onClick={() => setSelected(null)}
-          className="primary-button"
-          style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}
+          className="primary-button back-button"
         >
           חזרה
         </button>
@@ -89,8 +88,7 @@ function App() {
       <div dir="rtl" className="screen-container">
         <button
           onClick={() => setPage("learning-menu")}
-          className="primary-button"
-          style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}
+          className="primary-button back-button"
         >
           חזרה
         </button>
@@ -112,7 +110,7 @@ function App() {
   if (page === "learning-menu") {
     return (
       <div dir="rtl" className="screen-container" style={{ gap: 40 }}>
-        <button onClick={() => setPage("home" )} style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}>
+        <button onClick={() => setPage("home" )} className="primary-button back-button">
           חזרה
         </button>
         <h1 style={{ fontSize: 48 }}>בחרו נושא למידה</h1>
@@ -160,7 +158,7 @@ function App() {
   if (page === "games-menu") {
     return (
       <div dir="rtl" className="screen-container" style={{ gap: 40 }}>
-        <button onClick={() => setPage("home")} style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}>
+        <button onClick={() => setPage("home")} className="primary-button back-button">
           חזרה
         </button>
         <h1 style={{ fontSize: 48 }}>בחרו משחק</h1>

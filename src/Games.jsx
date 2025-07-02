@@ -98,7 +98,7 @@ export default function Games({ onBack }) {
     const successCount = results.filter(Boolean).length;
     return (
       <div dir="rtl" className="screen-container" style={{ gap: 24 }}>
-        <button onClick={onBack} className="primary-button" style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}>
+        <button onClick={onBack} className="primary-button back-button">
           חזרה לדף הבית
         </button>
         <div className="game-card">
@@ -116,7 +116,7 @@ export default function Games({ onBack }) {
 
   return (
     <div dir="rtl" className="screen-container" style={{ gap: 32 }}>
-      <button onClick={onBack} className="primary-button" style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}>
+      <button onClick={onBack} className="primary-button back-button">
         חזרה לדף הבית
       </button>
       <h2 className="score-banner" style={{ fontSize: 20 }}>

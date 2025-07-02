@@ -74,8 +74,7 @@ export default function Adjectives({ onBack }) {
       <div dir="rtl" className="screen-container" style={{ gap: 24 }}>
         <button
           onClick={() => setSelected(null)}
-          className="primary-button"
-          style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}
+          className="primary-button back-button"
         >
           חזרה
         </button>
@@ -108,7 +107,7 @@ export default function Adjectives({ onBack }) {
   // Grid view
   return (
     <div dir="rtl" className="screen-container">
-      <button onClick={onBack} className="primary-button" style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}>
+      <button onClick={onBack} className="primary-button back-button">
         חזרה
       </button>
       <h1 style={{ fontSize: 36, marginBottom: 24 }}>בחרו זוג תארים</h1>
