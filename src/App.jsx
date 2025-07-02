@@ -144,46 +144,35 @@ function App() {
   // Learning menu page
   if (page === "learning-menu") {
     return (
-      <div
-        dir="rtl"
-        style={{
-          textAlign: "center",
-          fontFamily: "inherit",
-          padding: 32,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "100vh",
-          gap: 40,
-          position: "relative",
-        }}
-      >
-        <button onClick={() => setPage("home" )} style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}>
+      <div dir="rtl" className="learning-menu">
+        <button onClick={() => setPage("home")} className="back-button">
           חזרה
         </button>
-        <h1 style={{ fontSize: 48 }}>בחרו נושא למידה</h1>
-        <div style={{ display: "flex", gap: 40 }}>
+        <h1 className="learning-title">בחרו נושא למידה</h1>
+        <div className="learning-options">
           <button
             onClick={() => {
               setPage("letters");
               setSelected(null);
             }}
-            style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
+            className="learning-card"
           >
-            אותיות
+            <span role="img" aria-label="letters" style={{ fontSize: 24 }}>🔠</span>
+            <span>אותיות</span>
           </button>
           <button
             onClick={() => setPage("adjectives")}
-            style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
+            className="learning-card"
           >
-            תארים
+            <span role="img" aria-label="adjectives" style={{ fontSize: 24 }}>✨</span>
+            <span>תארים</span>
           </button>
           <button
             onClick={() => setPage("special")}
-            style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
+            className="learning-card"
           >
-            אותיות מיוחדות
+            <span role="img" aria-label="special" style={{ fontSize: 24 }}>⭐</span>
+            <span>אותיות מיוחדות</span>
           </button>
         </div>
       </div>

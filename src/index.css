@@ -103,3 +103,67 @@ button:focus-visible {
 .home-button:hover {
   background: rgba(255, 255, 255, 0.3);
 }
+
+/* Learning menu styles */
+.learning-menu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  gap: 2rem;
+  background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
+  color: #fff;
+  padding: 2rem;
+}
+
+.learning-title {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.learning-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.learning-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  font-size: 1.25rem;
+  color: #fff;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.learning-card:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+.back-button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid #fff;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.4rem 1rem;
+  transition: background 0.3s;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
