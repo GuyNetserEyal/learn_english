@@ -71,43 +71,34 @@ export default function Adjectives({ onBack }) {
     const sentence2 = `${pair.adjectives[1]} ${pair.nouns[1]}`;
 
     return (
-      <div
-        dir="rtl"
-        style={{
-          textAlign: "center",
-          fontFamily: "inherit",
-          padding: 32,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "100vh",
-          position: "relative",
-          gap: 24,
-        }}
-      >
-        <button onClick={() => setSelected(null)} style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}>
+      <div dir="rtl" className="screen-container" style={{ gap: 24 }}>
+        <button
+          onClick={() => setSelected(null)}
+          className="primary-button back-button"
+        >
           חזרה
         </button>
 
         <h1 style={{ fontSize: 48 }}>{pair.adjectives[0]} / {pair.adjectives[1]}</h1>
 
-        {/* First sentence */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-          <div style={{ fontSize: 72 }}>{pair.icons[0]}</div>
-          <div style={{ fontSize: 40 }}>{sentence1}</div>
-          <div style={{ fontSize: 24 }}>{pair.hebrew[0]} {pair.hebrewNouns[0]}</div>
-          <div style={{ fontSize: 22, color: '#2b2b2b', marginTop: 2 }}>{pair.hebrewPhrase[0]}</div>
-          <button onClick={() => speak(sentence1)} style={{ marginTop: 6, cursor: "pointer" }}>השמע</button>
-        </div>
+        <div style={{ display: 'flex', gap: 40 }}>
+          {/* First sentence */}
+          <div className="detail-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+            <div style={{ fontSize: 72 }}>{pair.icons[0]}</div>
+            <div style={{ fontSize: 40 }}>{sentence1}</div>
+            <div style={{ fontSize: 24 }}>{pair.hebrew[0]} {pair.hebrewNouns[0]}</div>
+            <div style={{ fontSize: 22, color: '#2b2b2b', marginTop: 2 }}>{pair.hebrewPhrase[0]}</div>
+            <button onClick={() => speak(sentence1)} className="primary-button" style={{ marginTop: 6 }}>השמע</button>
+          </div>
 
-        {/* Second sentence */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-          <div style={{ fontSize: 72 }}>{pair.icons[1]}</div>
-          <div style={{ fontSize: 40 }}>{sentence2}</div>
-          <div style={{ fontSize: 24 }}>{pair.hebrew[1]} {pair.hebrewNouns[1]}</div>
-          <div style={{ fontSize: 22, color: '#2b2b2b', marginTop: 2 }}>{pair.hebrewPhrase[1]}</div>
-          <button onClick={() => speak(sentence2)} style={{ marginTop: 6, cursor: "pointer" }}>השמע</button>
+          {/* Second sentence */}
+          <div className="detail-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+            <div style={{ fontSize: 72 }}>{pair.icons[1]}</div>
+            <div style={{ fontSize: 40 }}>{sentence2}</div>
+            <div style={{ fontSize: 24 }}>{pair.hebrew[1]} {pair.hebrewNouns[1]}</div>
+            <div style={{ fontSize: 22, color: '#2b2b2b', marginTop: 2 }}>{pair.hebrewPhrase[1]}</div>
+            <button onClick={() => speak(sentence2)} className="primary-button" style={{ marginTop: 6 }}>השמע</button>
+          </div>
         </div>
       </div>
     );
@@ -115,31 +106,14 @@ export default function Adjectives({ onBack }) {
 
   // Grid view
   return (
-    <div dir="rtl" style={{ textAlign: "center", fontFamily: "inherit", padding: 32 }}>
-      <button onClick={onBack} style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}>
+    <div dir="rtl" className="screen-container">
+      <button onClick={onBack} className="primary-button back-button">
         חזרה
       </button>
       <h1 style={{ fontSize: 36, marginBottom: 24 }}>בחרו זוג תארים</h1>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 16 }}>
+      <div className="pairs-grid">
         {PAIRS.map((p, idx) => (
-          <button
-            key={idx}
-            onClick={() => setSelected(idx)}
-            style={{
-              width: 140,
-              height: 140,
-              borderRadius: 16,
-              border: "2px solid #333",
-              background: "#f7f7f7",
-              cursor: "pointer",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 4,
-              fontSize: 18,
-            }}
-          >
+          <button key={idx} onClick={() => setSelected(idx)} className="pair-card">
             <span style={{ fontSize: 32 }}>{p.icons[0]} {p.icons[1]}</span>
             <span>{p.adjectives[0]} / {p.adjectives[1]}</span>
           </button>
@@ -147,4 +121,4 @@ export default function Adjectives({ onBack }) {
       </div>
     </div>
   );
-} 
+}

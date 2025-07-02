@@ -178,19 +178,19 @@ export default function MissingLetterGame({ onBack }) {
 
   if (level === null) {
     return (
-      <div dir="rtl" style={{ textAlign: "center", padding: 32, fontFamily: "inherit", position: "relative" }}>
-        <button onClick={onBack} style={{ position: "absolute", top: 20, left: 20 }}>
+      <div dir="rtl" className="screen-container">
+        <button onClick={onBack} className="primary-button back-button">
           חזרה
         </button>
         <h1 style={{ fontSize: 48, marginBottom: 32 }}>בחרו רמת קושי</h1>
         <div style={{ display: "flex", gap: 40, justifyContent: "center" }}>
-          <button onClick={() => startGame(1)} style={{ padding: "20px 40px", fontSize: 28 }}>
+          <button onClick={() => startGame(1)} className="primary-button" style={{ fontSize: 28 }}>
             1️⃣ קל
           </button>
-          <button onClick={() => startGame(2)} style={{ padding: "20px 40px", fontSize: 28 }}>
+          <button onClick={() => startGame(2)} className="primary-button" style={{ fontSize: 28 }}>
             2️⃣ תנועות
           </button>
-          <button onClick={() => startGame(3)} style={{ padding: "20px 40px", fontSize: 28 }}>
+          <button onClick={() => startGame(3)} className="primary-button" style={{ fontSize: 28 }}>
             3️⃣ מיוחד
           </button>
         </div>
@@ -203,13 +203,17 @@ export default function MissingLetterGame({ onBack }) {
   // End of game summary
   if (index >= session.length) {
     return (
-      <div dir="rtl" style={{ textAlign: "center", padding: 32, fontFamily: "inherit", position: "relative" }}>
-        <button onClick={onBack} style={{ position: "absolute", top: 20, left: 20 }}>
+      <div dir="rtl" className="screen-container">
+        <button onClick={onBack} className="primary-button back-button">
           חזרה
         </button>
-        <h1 style={{ fontSize: 56 }}>תוצאה</h1>
-        <p style={{ fontSize: 32 }}>השגת {score} מתוך {session.length} נקודות</p>
-        <button onClick={() => startGame(level)} style={{ padding: "14px 32px", fontSize: 24 }}>שחק שוב</button>
+        <div className="game-card">
+          <h1 style={{ fontSize: 56 }}>תוצאה</h1>
+          <p className="score-banner">השגת {score} מתוך {session.length} נקודות</p>
+          <button onClick={() => startGame(level)} className="primary-button" style={{ fontSize: 24 }}>
+            שחק שוב
+          </button>
+        </div>
       </div>
     );
   }
@@ -228,27 +232,19 @@ export default function MissingLetterGame({ onBack }) {
   };
 
   return (
-    <div dir="rtl" style={{ textAlign: "center", padding: 32, fontFamily: "inherit", position: "relative" }}>
-      <button onClick={onBack} style={{ position: "absolute", top: 20, left: 20 }}>חזרה</button>
-      <h2 style={{ fontSize: 20 }}>מילה {index + 1} מתוך {session.length}</h2>
-      <div style={{ fontSize: 100 }}>{q.wordObj.icon}</div>
+    <div dir="rtl" className="screen-container">
+      <button onClick={onBack} className="primary-button back-button">חזרה</button>
+      <h2 className="score-banner" style={{ fontSize: 20 }}>מילה {index + 1} מתוך {session.length}</h2>
+      <div className="large-icon">{q.wordObj.icon}</div>
       <div style={{ fontSize: 32, marginBottom: 8 }}>{q.wordObj.hebPron}</div>
       <div style={{ fontSize: 24, marginBottom: 16 }}>{q.wordObj.he}</div>
-      <button onClick={() => speak(q.wordObj.en)} style={{ padding: "8px 20px", fontSize: 18, marginBottom: 24 }}>
+      <button onClick={() => speak(q.wordObj.en)} className="primary-button" style={{ fontSize: 18, marginBottom: 24 }}>
         🔊 השמע
       </button>
-      <div dir="ltr" style={{ fontSize: 64, marginBottom: 32, display: "flex", justifyContent: "center" }}>
+      <div dir="ltr" className="masked-word">
         {q.masked.split("").map((ch, i) =>
           ch === "_" ? (
-            <span
-              key={i}
-              style={{
-                width: 48,
-                borderBottom: "4px solid #333",
-                display: "inline-block",
-                margin: "0 4px",
-              }}
-            ></span>
+            <span key={i} className="blank"></span>
           ) : (
             <span key={i} style={{ margin: "0 4px" }}>
               {ch}
@@ -256,34 +252,27 @@ export default function MissingLetterGame({ onBack }) {
           )
         )}
       </div>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center" }}>
+      <div className="option-grid">
         {q.options.map((opt) => {
-          let bg = "#fff";
-          let color = "#000";
+          let extra = "";
+          let style = {};
           if (selected !== null) {
             if (opt === q.answer) {
-              bg = "#4caf50"; // green correct
-              color = "#fff";
+              extra = " correct";
             } else if (opt === selected) {
-              bg = "#f44336"; // red wrong
-              color = "#fff";
+              extra = " wrong";
             }
+          }
+          if (selected !== null) {
+            style.cursor = "default";
           }
           return (
             <button
               key={opt}
               onClick={() => handleSelect(opt)}
               disabled={selected !== null}
-              style={{
-                padding: "14px 24px",
-                fontSize: 28,
-                borderRadius: 12,
-                cursor: selected === null ? "pointer" : "default",
-                background: bg,
-                color,
-                border: "2px solid #333",
-                minWidth: 64,
-              }}
+              className={`option-button${extra}`}
+              style={style}
             >
               {opt}
             </button>
@@ -292,4 +281,4 @@ export default function MissingLetterGame({ onBack }) {
       </div>
     </div>
   );
-} 
+}

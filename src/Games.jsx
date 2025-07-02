@@ -97,77 +97,49 @@ export default function Games({ onBack }) {
   if (stage === 3) {
     const successCount = results.filter(Boolean).length;
     return (
-      <div
-        dir="rtl"
-        style={{
-          textAlign: "center",
-          fontFamily: "inherit",
-          padding: 32,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "100vh",
-          gap: 24,
-          position: "relative",
-        }}
-      >
-        <button onClick={onBack} style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}>
+      <div dir="rtl" className="screen-container" style={{ gap: 24 }}>
+        <button onClick={onBack} className="primary-button back-button">
           חזרה לדף הבית
         </button>
-        <h1 style={{ fontSize: 48 }}>סיום המשחק!</h1>
-        <p style={{ fontSize: 28 }}>
+        <div className="game-card">
+          <h1 style={{ fontSize: 48 }}>סיום המשחק!</h1>
+          <p className="score-banner">
           הצלחתם {successCount} מתוך {session.length} מילים
-        </p>
-        <button
-          onClick={handleNewGame}
-          style={{ padding: "12px 24px", fontSize: 20, borderRadius: 10, cursor: "pointer" }}
-        >
-          משחק חדש
-        </button>
+          </p>
+          <button onClick={handleNewGame} className="primary-button" style={{ fontSize: 20 }}>
+            משחק חדש
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div
-      dir="rtl"
-      style={{
-        textAlign: "center",
-        fontFamily: "inherit",
-        padding: 32,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "100vh",
-        gap: 32,
-        position: "relative",
-      }}
-    >
-      <button onClick={onBack} style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}>
+    <div dir="rtl" className="screen-container" style={{ gap: 32 }}>
+      <button onClick={onBack} className="primary-button back-button">
         חזרה לדף הבית
       </button>
-      <h2 style={{ fontSize: 20 }}>
+      <h2 className="score-banner" style={{ fontSize: 20 }}>
         מילה {index + 1} מתוך {session.length}
       </h2>
 
       {/* Always show the word */}
-      <h1 style={{ fontSize: 64 }}>{current.word}</h1>
-      <div style={{ fontSize: 40, marginBottom: 8, color: '#444' }}>
+      <h1 className="big-word">{current.word}</h1>
+      <div className="sub-word">
         {current.word.charAt(0) + current.word.slice(1).toLowerCase()}
       </div>
 
       {/* Reveal icon if stage >= 1 */}
-      {stage >= 1 && <div style={{ fontSize: 100 }}>{current.icon}</div>}
+      {stage >= 1 && <div className="large-icon">{current.icon}</div>}
 
       {/* Reveal hebrew+sound if stage >= 2 */}
       {stage >= 2 && (
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
-          <div style={{ fontSize: 64 }}>{current.hebrew}</div>
+        <div className="game-card">
+          <div className="hebrew-word">{current.hebrew}</div>
           <button
             onClick={() => speak(current.word)}
-            style={{ padding: "10px 20px", fontSize: 18, borderRadius: 8, cursor: "pointer" }}
+            className="primary-button"
+            style={{ fontSize: 18 }}
           >
             השמע מילה
           </button>
@@ -178,23 +150,26 @@ export default function Games({ onBack }) {
       {stage < 2 && (
         <button
           onClick={handleNextStage}
-          style={{ padding: "12px 24px", fontSize: 24, borderRadius: 12, cursor: "pointer" }}
+          className="primary-button"
+          style={{ fontSize: 24, borderRadius: 12 }}
         >
           ➡️
         </button>
       )}
 
       {stage >= 2 && (
-        <div style={{ display: "flex", gap: 40 }}>
+        <div className="controls">
           <button
             onClick={() => handleResult(true)}
-            style={{ padding: "12px 24px", fontSize: 32, borderRadius: 12, cursor: "pointer" }}
+            className="primary-button"
+            style={{ fontSize: 32, borderRadius: 12 }}
           >
             ✅
           </button>
           <button
             onClick={() => handleResult(false)}
-            style={{ padding: "12px 24px", fontSize: 32, borderRadius: 12, cursor: "pointer" }}
+            className="primary-button"
+            style={{ fontSize: 32, borderRadius: 12 }}
           >
             ❌
           </button>
@@ -202,4 +177,4 @@ export default function Games({ onBack }) {
       )}
     </div>
   );
-} 
+}

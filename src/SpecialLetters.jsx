@@ -378,57 +378,42 @@ export default function SpecialLetters({ onBack }) {
   if (selected !== null) {
     const rule = CASES.find((c) => c.key === selected);
     return (
-      <div dir="rtl" style={{ textAlign: "center", fontFamily: "inherit", padding: 32, position: "relative" }}>
-        <button onClick={() => setSelected(null)} style={{ position: "absolute", top: 20, left: 20 }}>חזרה</button>
-        <h1 style={{ fontSize: 42, marginBottom: 12 }}>{rule.title}</h1>
-        <p style={{ fontSize: 22, marginBottom: 24 }}>{rule.description}</p>
-        <div style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "center" }}>
-          {rule.words.map((w) => (
-            <div key={w.en} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-              <div style={{ fontSize: 34 }}>
-                {(WORD_META[w.en.toLowerCase()]?.icon ?? "")} {w.en}
+      <div dir="rtl" className="screen-container" style={{ gap: 24 }}>
+        <button onClick={() => setSelected(null)} className="primary-button back-button">
+          חזרה
+        </button>
+        <div className="detail-card" style={{ maxWidth: 500 }}>
+          <h1 style={{ fontSize: 42, marginBottom: 12 }}>{rule.title}</h1>
+          <p style={{ fontSize: 22, marginBottom: 24 }}>{rule.description}</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'center' }}>
+            {rule.words.map((w) => (
+              <div key={w.en} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{ fontSize: 34 }}>
+                  {(WORD_META[w.en.toLowerCase()]?.icon ?? '')} {w.en}
+                </div>
+                <div style={{ fontSize: 26 }}>{w.he}</div>
+                {WORD_META[w.en.toLowerCase()]?.trans && (
+                  <div style={{ fontSize: 22 }}>{WORD_META[w.en.toLowerCase()].trans}</div>
+                )}
+                <button onClick={() => speak(w.en)} className="primary-button" style={{ marginTop: 4, fontSize: 14 }}>🔊</button>
               </div>
-              <div style={{ fontSize: 26 }}>{w.he}</div>
-              {WORD_META[w.en.toLowerCase()]?.trans && (
-                <div style={{ fontSize: 22 }}>{WORD_META[w.en.toLowerCase()].trans}</div>
-              )}
-              <button onClick={() => speak(w.en)} style={{ marginTop: 4, fontSize: 14 }}>🔊</button>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div dir="rtl" style={{ textAlign: "center", fontFamily: "inherit", padding: 32 }}>
-      <button onClick={onBack} style={{ position: "absolute", top: 20, left: 20 }}>חזרה</button>
+    <div dir="rtl" className="screen-container">
+      <button onClick={onBack} className="primary-button back-button">חזרה</button>
       <h1 style={{ fontSize: 36, marginBottom: 24 }}>אותיות מיוחדות</h1>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center" }}>
+      <div className="rules-grid">
         {CASES.map((c) => {
           const firstWord = c.words[0]?.en.toLowerCase();
-          const icon = WORD_META[firstWord]?.icon ?? "";
+          const icon = WORD_META[firstWord]?.icon ?? '';
           return (
-            <button
-              key={c.key}
-              onClick={() => setSelected(c.key)}
-              style={{
-                width: 160,
-                height: 100,
-                borderRadius: 14,
-                border: "2px solid #333",
-                background: "#fafafa",
-                cursor: "pointer",
-                fontSize: 16,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
-                padding: 6,
-                gap: 4,
-              }}
-            >
+            <button key={c.key} onClick={() => setSelected(c.key)} className="rule-card">
               <span style={{ fontSize: 28 }}>{icon}</span>
               <span>{c.title}</span>
             </button>
@@ -437,4 +422,4 @@ export default function SpecialLetters({ onBack }) {
       </div>
     </div>
   );
-} 
+}

@@ -180,33 +180,17 @@ export default function WordSearch({ onBack }) {
   const allFound = words.every((w) => found[w.word]);
 
   return (
-    <div
-      dir="rtl"
-      style={{
-        textAlign: "center",
-        fontFamily: "inherit",
-        padding: 16,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: 12,
-        position: "relative",
-      }}
-    >
-      <button onClick={onBack} style={{ position: "absolute", top: 10, left: 10, fontSize: 18 }}>
+    <div dir="rtl" className="screen-container" style={{ padding: 16, gap: 12 }}>
+      <button onClick={onBack} className="primary-button back-button">
         חזרה לדף הבית
       </button>
       <h2>חפש את המילים הבאות</h2>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12 }}>
+      <div className="word-list">
         {words.map((w) => (
           <div
             key={w.word}
-            style={{
-              padding: 6,
-              borderRadius: 6,
-              background: found[w.word] ? w.color : "#eee",
-              minWidth: 80,
-            }}
+            className="word-item"
+            style={{ background: found[w.word] ? w.color : "#eee" }}
           >
             <div>{w.word}</div>
             {found[w.word] && (
@@ -218,7 +202,8 @@ export default function WordSearch({ onBack }) {
             {found[w.word] && (
               <button
                 onClick={() => speak(w.word)}
-                style={{ fontSize: 12, marginTop: 4, cursor: "pointer" }}
+                className="primary-button"
+                style={{ fontSize: 12, marginTop: 4 }}
               >
                 השמע
               </button>
@@ -226,7 +211,8 @@ export default function WordSearch({ onBack }) {
             {!found[w.word] && (
               <button
                 onClick={() => setFound((prev) => ({ ...prev, [w.word]: true }))}
-                style={{ fontSize: 12, marginTop: 4, cursor: "pointer" }}
+                className="primary-button"
+                style={{ fontSize: 12, marginTop: 4 }}
               >
                 לא מצאתי
               </button>
@@ -236,7 +222,7 @@ export default function WordSearch({ onBack }) {
       </div>
 
       <div style={{ overflowX: "auto", marginTop: 16 }}>
-        <table style={{ borderCollapse: "collapse" }}>
+        <table className="board-table">
           <tbody>
             {boardData.grid.map((rowArr, rowIdx) => (
               <tr key={rowIdx}>
@@ -254,16 +240,8 @@ export default function WordSearch({ onBack }) {
                       key={colIdx}
                       onMouseDown={() => handleMouseDown(rowIdx, colIdx)}
                       onMouseUp={() => handleMouseUp(rowIdx, colIdx)}
-                      style={{
-                        width: 32,
-                        height: 32,
-                        border: "1px solid #999",
-                        textAlign: "center",
-                        userSelect: "none",
-                        background: cellColor ? cellColor : "#fff",
-                        fontWeight: "bold",
-                        fontSize: 16,
-                      }}
+                      className="board-cell"
+                      style={{ background: cellColor ? cellColor : "#fff" }}
                     >
                       {ch}
                     </td>
