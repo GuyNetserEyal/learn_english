@@ -266,3 +266,114 @@ button:focus-visible {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   text-align: center;
 }
+
+/* ----- Games ----- */
+.game-card {
+  background: #ffffff;
+  border: 2px solid #333;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.big-word {
+  font-size: 64px;
+}
+
+.sub-word {
+  font-size: 40px;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.large-icon {
+  font-size: 100px;
+}
+
+.hebrew-word {
+  font-size: 64px;
+}
+
+.controls {
+  display: flex;
+  gap: 40px;
+}
+
+.word-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.word-item {
+  padding: 6px;
+  border-radius: 6px;
+  min-width: 80px;
+}
+
+.board-table {
+  border-collapse: collapse;
+}
+
+.board-cell {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #999;
+  text-align: center;
+  user-select: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.option-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.option-button {
+  padding: 14px 24px;
+  font-size: 28px;
+  border-radius: 12px;
+  border: 2px solid #333;
+  background: #fff;
+  min-width: 64px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.option-button.correct {
+  background: #4caf50;
+  color: #fff;
+}
+
+.option-button.wrong {
+  background: #f44336;
+  color: #fff;
+}
+
+.masked-word {
+  font-size: 64px;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.blank {
+  width: 48px;
+  border-bottom: 4px solid #333;
+  display: inline-block;
+  margin: 0 4px;
+}
+
+.game-tile .desc {
+  font-size: 14px;
+  color: #555;
+}

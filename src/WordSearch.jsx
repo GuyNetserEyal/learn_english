@@ -185,16 +185,12 @@ export default function WordSearch({ onBack }) {
         חזרה לדף הבית
       </button>
       <h2>חפש את המילים הבאות</h2>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12 }}>
+      <div className="word-list">
         {words.map((w) => (
           <div
             key={w.word}
-            style={{
-              padding: 6,
-              borderRadius: 6,
-              background: found[w.word] ? w.color : "#eee",
-              minWidth: 80,
-            }}
+            className="word-item"
+            style={{ background: found[w.word] ? w.color : "#eee" }}
           >
             <div>{w.word}</div>
             {found[w.word] && (
@@ -226,7 +222,7 @@ export default function WordSearch({ onBack }) {
       </div>
 
       <div style={{ overflowX: "auto", marginTop: 16 }}>
-        <table style={{ borderCollapse: "collapse" }}>
+        <table className="board-table">
           <tbody>
             {boardData.grid.map((rowArr, rowIdx) => (
               <tr key={rowIdx}>
@@ -244,16 +240,8 @@ export default function WordSearch({ onBack }) {
                       key={colIdx}
                       onMouseDown={() => handleMouseDown(rowIdx, colIdx)}
                       onMouseUp={() => handleMouseUp(rowIdx, colIdx)}
-                      style={{
-                        width: 32,
-                        height: 32,
-                        border: "1px solid #999",
-                        textAlign: "center",
-                        userSelect: "none",
-                        background: cellColor ? cellColor : "#fff",
-                        fontWeight: "bold",
-                        fontSize: 16,
-                      }}
+                      className="board-cell"
+                      style={{ background: cellColor ? cellColor : "#fff" }}
                     >
                       {ch}
                     </td>
