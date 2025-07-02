@@ -340,6 +340,7 @@ button:focus-visible {
   border: 1px solid #999;
   text-align: center;
   user-select: none;
+  touch-action: none;
   font-weight: bold;
   font-size: 16px;
 }
