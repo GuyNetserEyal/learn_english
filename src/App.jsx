@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Games from "./Games.jsx";
 import WordSearch from "./WordSearch.jsx";
 import Adjectives from "./Adjectives.jsx";
+import SpecialLetters from "./SpecialLetters.jsx";
+import MissingLetterGame from "./MissingLetterGame.jsx";
 import 'pepjs';
 
 const LETTERS = [
@@ -34,7 +36,7 @@ const LETTERS = [
 ];
 
 function App() {
-  // page can be "home", "learning-menu", "letters", "adjectives", "games-menu", "game-10", "game-search"
+  // page can be "home", "learning-menu", "letters", "adjectives", "special", "games-menu", "game-10", "game-search", "game-missing"
   const [page, setPage] = useState("home");
   const [selected, setSelected] = useState(null); // index of selected letter when inside learning detail
 
@@ -177,6 +179,12 @@ function App() {
           >
             תארים
           </button>
+          <button
+            onClick={() => setPage("special")}
+            style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
+          >
+            אותיות מיוחדות
+          </button>
         </div>
       </div>
     );
@@ -185,6 +193,11 @@ function App() {
   // adjectives learning page
   if (page === "adjectives") {
     return <Adjectives onBack={() => setPage("learning-menu")} />;
+  }
+
+  // special letters learning page
+  if (page === "special") {
+    return <SpecialLetters onBack={() => setPage("learning-menu")} />;
   }
 
   // games submenu
@@ -222,6 +235,12 @@ function App() {
           >
             חיפוש מילים
           </button>
+          <button
+            onClick={() => setPage("game-missing")}
+            style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
+          >
+            אות חסרה
+          </button>
         </div>
       </div>
     );
@@ -233,6 +252,10 @@ function App() {
 
   if (page === "game-search") {
     return <WordSearch onBack={() => setPage("games-menu")} />;
+  }
+
+  if (page === "game-missing") {
+    return <MissingLetterGame onBack={() => setPage("games-menu")} />;
   }
 
   // 4. Home front page
