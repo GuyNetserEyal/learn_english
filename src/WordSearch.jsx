@@ -180,20 +180,8 @@ export default function WordSearch({ onBack }) {
   const allFound = words.every((w) => found[w.word]);
 
   return (
-    <div
-      dir="rtl"
-      style={{
-        textAlign: "center",
-        fontFamily: "inherit",
-        padding: 16,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: 12,
-        position: "relative",
-      }}
-    >
-      <button onClick={onBack} style={{ position: "absolute", top: 10, left: 10, fontSize: 18 }}>
+    <div dir="rtl" className="screen-container" style={{ padding: 16, gap: 12 }}>
+      <button onClick={onBack} className="primary-button" style={{ position: "absolute", top: 10, left: 10, fontSize: 18 }}>
         חזרה לדף הבית
       </button>
       <h2>חפש את המילים הבאות</h2>
@@ -218,7 +206,8 @@ export default function WordSearch({ onBack }) {
             {found[w.word] && (
               <button
                 onClick={() => speak(w.word)}
-                style={{ fontSize: 12, marginTop: 4, cursor: "pointer" }}
+                className="primary-button"
+                style={{ fontSize: 12, marginTop: 4 }}
               >
                 השמע
               </button>
@@ -226,7 +215,8 @@ export default function WordSearch({ onBack }) {
             {!found[w.word] && (
               <button
                 onClick={() => setFound((prev) => ({ ...prev, [w.word]: true }))}
-                style={{ fontSize: 12, marginTop: 4, cursor: "pointer" }}
+                className="primary-button"
+                style={{ fontSize: 12, marginTop: 4 }}
               >
                 לא מצאתי
               </button>

@@ -144,21 +144,7 @@ function App() {
   // Learning menu page
   if (page === "learning-menu") {
     return (
-      <div
-        dir="rtl"
-        style={{
-          textAlign: "center",
-          fontFamily: "inherit",
-          padding: 32,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "100vh",
-          gap: 40,
-          position: "relative",
-        }}
-      >
+      <div dir="rtl" className="screen-container" style={{ gap: 40 }}>
         <button onClick={() => setPage("home" )} style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}>
           חזרה
         </button>
@@ -169,20 +155,23 @@ function App() {
               setPage("letters");
               setSelected(null);
             }}
-            style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
+            className="menu-card"
           >
+            <div style={{ fontSize: 36 }}>🔤</div>
             אותיות
           </button>
           <button
             onClick={() => setPage("adjectives")}
-            style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
+            className="menu-card"
           >
+            <div style={{ fontSize: 36 }}>📚</div>
             תארים
           </button>
           <button
             onClick={() => setPage("special")}
-            style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
+            className="menu-card"
           >
+            <div style={{ fontSize: 36 }}>✨</div>
             אותיות מיוחדות
           </button>
         </div>
@@ -203,43 +192,26 @@ function App() {
   // games submenu
   if (page === "games-menu") {
     return (
-      <div
-        dir="rtl"
-        style={{
-          textAlign: "center",
-          fontFamily: "inherit",
-          padding: 32,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "100vh",
-          gap: 40,
-          position: "relative",
-        }}
-      >
+      <div dir="rtl" className="screen-container" style={{ gap: 40 }}>
         <button onClick={() => setPage("home")} style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}>
           חזרה
         </button>
         <h1 style={{ fontSize: 48 }}>בחרו משחק</h1>
         <div style={{ display: "flex", gap: 40 }}>
-          <button
-            onClick={() => setPage("game-10")}
-            style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
-          >
-            10 מילים
+          <button onClick={() => setPage("game-10")} className="game-tile">
+            <div style={{ fontSize: 36 }}>🎯</div>
+            <div>10 מילים</div>
+            <span className="desc">תרגול אוצר מילים</span>
           </button>
-          <button
-            onClick={() => setPage("game-search")}
-            style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
-          >
-            חיפוש מילים
+          <button onClick={() => setPage("game-search")} className="game-tile">
+            <div style={{ fontSize: 36 }}>🔎</div>
+            <div>חיפוש מילים</div>
+            <span className="desc">מצאו את המילים המוסתרות</span>
           </button>
-          <button
-            onClick={() => setPage("game-missing")}
-            style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
-          >
-            אות חסרה
+          <button onClick={() => setPage("game-missing")} className="game-tile">
+            <div style={{ fontSize: 36 }}>❔</div>
+            <div>אות חסרה</div>
+            <span className="desc">נחשו את האות החסרה</span>
           </button>
         </div>
       </div>

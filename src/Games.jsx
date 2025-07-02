@@ -130,22 +130,8 @@ export default function Games({ onBack }) {
   }
 
   return (
-    <div
-      dir="rtl"
-      style={{
-        textAlign: "center",
-        fontFamily: "inherit",
-        padding: 32,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "100vh",
-        gap: 32,
-        position: "relative",
-      }}
-    >
-      <button onClick={onBack} style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}>
+    <div dir="rtl" className="screen-container" style={{ gap: 32 }}>
+      <button onClick={onBack} className="primary-button" style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}>
         חזרה לדף הבית
       </button>
       <h2 style={{ fontSize: 20 }}>
@@ -167,7 +153,8 @@ export default function Games({ onBack }) {
           <div style={{ fontSize: 64 }}>{current.hebrew}</div>
           <button
             onClick={() => speak(current.word)}
-            style={{ padding: "10px 20px", fontSize: 18, borderRadius: 8, cursor: "pointer" }}
+            className="primary-button"
+            style={{ fontSize: 18 }}
           >
             השמע מילה
           </button>
@@ -178,7 +165,8 @@ export default function Games({ onBack }) {
       {stage < 2 && (
         <button
           onClick={handleNextStage}
-          style={{ padding: "12px 24px", fontSize: 24, borderRadius: 12, cursor: "pointer" }}
+          className="primary-button"
+          style={{ fontSize: 24, borderRadius: 12 }}
         >
           ➡️
         </button>
@@ -188,13 +176,15 @@ export default function Games({ onBack }) {
         <div style={{ display: "flex", gap: 40 }}>
           <button
             onClick={() => handleResult(true)}
-            style={{ padding: "12px 24px", fontSize: 32, borderRadius: 12, cursor: "pointer" }}
+            className="primary-button"
+            style={{ fontSize: 32, borderRadius: 12 }}
           >
             ✅
           </button>
           <button
             onClick={() => handleResult(false)}
-            style={{ padding: "12px 24px", fontSize: 32, borderRadius: 12, cursor: "pointer" }}
+            className="primary-button"
+            style={{ fontSize: 32, borderRadius: 12 }}
           >
             ❌
           </button>

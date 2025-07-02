@@ -103,3 +103,73 @@ button:focus-visible {
 .home-button:hover {
   background: rgba(255, 255, 255, 0.3);
 }
+
+/* Reusable card for menu options */
+.menu-card {
+  padding: 20px 40px;
+  font-size: 28px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #fff;
+  border: 2px solid #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, background 0.3s;
+}
+
+.menu-card:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+/* Tile layout used in games menu */
+.game-tile {
+  width: 180px;
+  padding: 20px;
+  border-radius: 12px;
+  border: 2px solid #333;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, background 0.3s;
+}
+
+.game-tile:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+/* Generic screen container */
+.screen-container {
+  text-align: center;
+  font-family: inherit;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+.primary-button {
+  padding: 12px 24px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #fff;
+  border: 2px solid #333;
+  transition: background 0.3s;
+}
+
+.primary-button:hover {
+  background: #f0f0f0;
+}
+
+.score-banner {
+  font-size: 28px;
+  margin-bottom: 24px;
+}
