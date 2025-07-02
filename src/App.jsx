@@ -260,34 +260,21 @@ function App() {
 
   // 4. Home front page
   return (
-    <div
-      dir="rtl"
-      style={{
-        textAlign: "center",
-        fontFamily: "inherit",
-        padding: 32,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "100vh",
-        gap: 40,
-      }}
-    >
-      <h1 style={{ fontSize: 48 }}>ברוכים הבאים</h1>
-      <div style={{ display: "flex", gap: 40 }}>
+    <div dir="rtl" className="home-hero">
+      <h1>ברוכים הבאים</h1>
+      <div className="hero-buttons">
         <button
           onClick={() => {
             setPage("learning-menu");
             setSelected(null);
           }}
-          style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
+          className="home-button"
         >
           למידה
         </button>
         <button
           onClick={() => setPage("games-menu")}
-          style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
+          className="home-button"
         >
           משחקים
         </button>
