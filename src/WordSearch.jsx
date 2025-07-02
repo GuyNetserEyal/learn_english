@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import 'pepjs';
 // Same vocabulary as Games component will import from here to avoid duplication
 const VOCAB = [

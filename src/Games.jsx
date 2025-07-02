@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useState } from "react";
 
 const VOCAB = [
   { word: "APPLE", hebrew: "אַפֶּל", icon: "🍎" },
