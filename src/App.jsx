@@ -54,47 +54,30 @@ function App() {
   if (page === "letters" && selected !== null) {
     const { letter, hebrewName, word, hebrewWord, icon } = LETTERS[selected];
     return (
-      <div
-        dir="rtl"
-        style={{
-          textAlign: "center",
-          fontFamily: "inherit",
-          padding: 32,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "100vh",
-          position: "relative",
-        }}
-      >
+      <div dir="rtl" className="screen-container" style={{ gap: 32 }}>
         <button
           onClick={() => setSelected(null)}
+          className="primary-button"
           style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}
         >
           חזרה
         </button>
-        <h1 style={{ fontSize: 80 }}>{icon}</h1>
-        <h1 style={{ fontSize: 64 }}>{letter}, {letter.toLowerCase()}</h1>
-        <h2 style={{ fontSize: 32 }}>{hebrewName}</h2>
-        <div style={{ marginTop: 32, fontSize: 28 }}>
-          <div><b>{word}</b></div>
-          <div>{hebrewWord}</div>
-        </div>
-
-        <div style={{ marginTop: 40, display: "flex", justifyContent: "center", gap: 20 }}>
-          <button
-            onClick={() => speak(letter.toLowerCase())}
-            style={{ padding: "12px 24px", fontSize: 18, borderRadius: 10, cursor: "pointer" }}
-          >
-            השמע אות
-          </button>
-          <button
-            onClick={() => speak(word)}
-            style={{ padding: "12px 24px", fontSize: 18, borderRadius: 10, cursor: "pointer" }}
-          >
-            השמע מילה
-          </button>
+        <div className="detail-card" style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <h1 style={{ fontSize: 80 }}>{icon}</h1>
+          <h1 style={{ fontSize: 64 }}>{letter}, {letter.toLowerCase()}</h1>
+          <h2 style={{ fontSize: 32 }}>{hebrewName}</h2>
+          <div style={{ marginTop: 16, fontSize: 28 }}>
+            <div><b>{word}</b></div>
+            <div>{hebrewWord}</div>
+          </div>
+          <div style={{ marginTop: 24, display: "flex", justifyContent: "center", gap: 20 }}>
+            <button onClick={() => speak(letter.toLowerCase())} className="primary-button">
+              השמע אות
+            </button>
+            <button onClick={() => speak(word)} className="primary-button">
+              השמע מילה
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -103,34 +86,18 @@ function App() {
   // 2. Letters grid page
   if (page === "letters") {
     return (
-      <div dir="rtl" style={{ textAlign: "center", fontFamily: "inherit", padding: 32 }}>
+      <div dir="rtl" className="screen-container">
         <button
           onClick={() => setPage("learning-menu")}
+          className="primary-button"
           style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}
         >
           חזרה
         </button>
         <h1 style={{ fontSize: 36, marginBottom: 24 }}>בחרו אות באנגלית</h1>
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 16 }}>
+        <div className="letters-grid">
           {LETTERS.map((l, idx) => (
-            <button
-              key={l.letter}
-              onClick={() => setSelected(idx)}
-              style={{
-                width: 90,
-                height: 90,
-                fontSize: 32,
-                margin: 8,
-                borderRadius: 16,
-                border: "2px solid #333",
-                background: "#f7f7f7",
-                cursor: "pointer",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+            <button key={l.letter} onClick={() => setSelected(idx)} className="letter-cell">
               <span style={{ fontSize: 24 }}>{l.icon}</span>
               <span>{l.letter}</span>
               <span style={{ fontSize: 18, marginTop: 4 }}>{l.hebrewName}</span>

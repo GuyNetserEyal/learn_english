@@ -173,3 +173,96 @@ button:focus-visible {
   font-size: 28px;
   margin-bottom: 24px;
 }
+
+/* ----- Learning pages ----- */
+.letters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.letter-cell {
+  width: 90px;
+  height: 90px;
+  border-radius: 16px;
+  border: 2px solid #333;
+  background: #f7f7f7;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.letter-cell:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+.pairs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.pair-card {
+  width: 140px;
+  height: 140px;
+  border-radius: 16px;
+  border: 2px solid #333;
+  background: #f7f7f7;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.pair-card:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+.rules-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.rule-card {
+  width: 160px;
+  height: 100px;
+  border-radius: 14px;
+  border: 2px solid #333;
+  background: #fafafa;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6px;
+  gap: 4px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.rule-card:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+.detail-card {
+  background: #ffffff;
+  border: 2px solid #333;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
