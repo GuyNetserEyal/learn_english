@@ -144,11 +144,11 @@ export default function WordSearch({ onBack }) {
     }
   };
 
-  const handleMouseDown = (row, col) => {
+  const handlePointerDown = (row, col) => {
     setStartCell([row, col]);
   };
 
-  const handleMouseUp = (row, col) => {
+  const handlePointerUp = (row, col) => {
     if (!startCell) return;
     const [r0, c0] = startCell;
     const dr = Math.sign(row - r0);
@@ -238,8 +238,8 @@ export default function WordSearch({ onBack }) {
                   return (
                     <td
                       key={colIdx}
-                      onMouseDown={() => handleMouseDown(rowIdx, colIdx)}
-                      onMouseUp={() => handleMouseUp(rowIdx, colIdx)}
+                      onPointerDown={() => handlePointerDown(rowIdx, colIdx)}
+                      onPointerUp={() => handlePointerUp(rowIdx, colIdx)}
                       className="board-cell"
                       style={{ background: cellColor ? cellColor : "#fff" }}
                     >
