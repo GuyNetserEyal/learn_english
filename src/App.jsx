@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Games from "./Games.jsx";
 import WordSearch from "./WordSearch.jsx";
+import Adjectives from "./Adjectives.jsx";
 import 'pepjs';
 
 const LETTERS = [
@@ -33,7 +34,7 @@ const LETTERS = [
 ];
 
 function App() {
-  // page can be "home", "learning", "games", "games-menu", "game-10", "game-search"
+  // page can be "home", "learning-menu", "letters", "adjectives", "games-menu", "game-10", "game-search"
   const [page, setPage] = useState("home");
   const [selected, setSelected] = useState(null); // index of selected letter when inside learning detail
 
@@ -48,7 +49,7 @@ function App() {
   };
 
   // 1. Detail view for a specific letter (inside learning)
-  if (page === "learning" && selected !== null) {
+  if (page === "letters" && selected !== null) {
     const { letter, hebrewName, word, hebrewWord, icon } = LETTERS[selected];
     return (
       <div
@@ -97,12 +98,12 @@ function App() {
     );
   }
 
-  // 2. Learning grid page
-  if (page === "learning") {
+  // 2. Letters grid page
+  if (page === "letters") {
     return (
       <div dir="rtl" style={{ textAlign: "center", fontFamily: "inherit", padding: 32 }}>
         <button
-          onClick={() => setPage("home")}
+          onClick={() => setPage("learning-menu")}
           style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}
         >
           חזרה
@@ -136,6 +137,54 @@ function App() {
         </div>
       </div>
     );
+  }
+
+  // Learning menu page
+  if (page === "learning-menu") {
+    return (
+      <div
+        dir="rtl"
+        style={{
+          textAlign: "center",
+          fontFamily: "inherit",
+          padding: 32,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "100vh",
+          gap: 40,
+          position: "relative",
+        }}
+      >
+        <button onClick={() => setPage("home" )} style={{ position: "absolute", top: 20, left: 20, fontSize: 18 }}>
+          חזרה
+        </button>
+        <h1 style={{ fontSize: 48 }}>בחרו נושא למידה</h1>
+        <div style={{ display: "flex", gap: 40 }}>
+          <button
+            onClick={() => {
+              setPage("letters");
+              setSelected(null);
+            }}
+            style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
+          >
+            אותיות
+          </button>
+          <button
+            onClick={() => setPage("adjectives")}
+            style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
+          >
+            תארים
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // adjectives learning page
+  if (page === "adjectives") {
+    return <Adjectives onBack={() => setPage("learning-menu")} />;
   }
 
   // games submenu
@@ -206,7 +255,7 @@ function App() {
       <div style={{ display: "flex", gap: 40 }}>
         <button
           onClick={() => {
-            setPage("learning");
+            setPage("learning-menu");
             setSelected(null);
           }}
           style={{ padding: "20px 40px", fontSize: 28, borderRadius: 12, cursor: "pointer" }}
