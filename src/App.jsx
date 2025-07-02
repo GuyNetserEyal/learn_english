@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Games from "./Games.jsx";
-import WordSearch from "./WordSearch.jsx";
+import WordSearchTap from "./WordSearchTap.jsx";
 import Adjectives from "./Adjectives.jsx";
 import SpecialLetters from "./SpecialLetters.jsx";
 import MissingLetterGame from "./MissingLetterGame.jsx";
@@ -188,7 +188,7 @@ function App() {
   }
 
   if (page === "game-search") {
-    return <WordSearch onBack={() => setPage("games-menu")} />;
+    return <WordSearchTap onBack={() => setPage("games-menu")} />;
   }
 
   if (page === "game-missing") {
