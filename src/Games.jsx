@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import VOCAB from "./vocab.js";
 
+function normalizeEntry(entry) {
+  const photos = entry.photos ?? (entry.icon ? [entry.icon] : []);
+  const audios = entry.audios ?? (entry.word ? [entry.word] : []);
+  return { ...entry, photos, audios };
+}
+
 function getRandomSession(size = 10) {
   const copy = [...VOCAB];
   // Fisher–Yates shuffle
@@ -8,7 +14,7 @@ function getRandomSession(size = 10) {
     const j = Math.floor(Math.random() * (i + 1));
     [copy[i], copy[j]] = [copy[j], copy[i]];
   }
-  return copy.slice(0, size);
+  return copy.slice(0, size).map((entry) => normalizeEntry(entry));
 }
 
 export default function Games({ onBack }) {
@@ -87,19 +93,30 @@ export default function Games({ onBack }) {
       </div>
 
       {/* Reveal icon if stage >= 1 */}
-      {stage >= 1 && <div className="large-icon">{current.icon}</div>}
+      {stage >= 1 && (
+        <div className="large-icon-group">
+          {current.photos.map((photo, idx) => (
+            <span key={`${photo}-${idx}`} className="large-icon">
+              {photo}
+            </span>
+          ))}
+        </div>
+      )}
 
       {/* Reveal hebrew+sound if stage >= 2 */}
       {stage >= 2 && (
         <div className="game-card">
           <div className="hebrew-word">{current.hebrew}</div>
-          <button
-            onClick={() => speak(current.word)}
-            className="primary-button"
-            style={{ fontSize: 18 }}
-          >
-            השמע מילה
-          </button>
+          {current.audios.map((audio, idx) => (
+            <button
+              key={`${audio}-${idx}`}
+              onClick={() => speak(audio)}
+              className="primary-button"
+              style={{ fontSize: 18 }}
+            >
+              השמע מילה{current.audios.length > 1 ? ` ${idx + 1}` : ""}
+            </button>
+          ))}
         </div>
       )}
 

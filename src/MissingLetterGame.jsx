@@ -150,6 +150,12 @@ function hasSimpleConsonant(word) {
   return positions.includes(true);
 }
 
+function normalizeWord(wordObj) {
+  const photos = wordObj.photos ?? (wordObj.icon ? [wordObj.icon] : []);
+  const audios = wordObj.audios ?? (wordObj.en ? [wordObj.en] : []);
+  return { ...wordObj, photos, audios };
+}
+
 export default function MissingLetterGame({ onBack }) {
   const [level, setLevel] = useState(null); // 1,2,3
   const [session, setSession] = useState([]); // 5 words per round
@@ -171,7 +177,7 @@ export default function MissingLetterGame({ onBack }) {
       pool = WORDS.filter((w) => hasSimpleConsonant(w.en));
     }
 
-    const words = shuffle(pool).slice(0, 5);
+    const words = shuffle(pool).slice(0, 5).map((wordObj) => normalizeWord(wordObj));
     const qs = words.map((w) => ({ wordObj: w, ...buildQuestion(w, lvl) }));
     setSession(qs);
   };
@@ -235,12 +241,27 @@ export default function MissingLetterGame({ onBack }) {
     <div dir="rtl" className="screen-container">
       <button onClick={onBack} className="primary-button back-button">חזרה</button>
       <h2 className="score-banner" style={{ fontSize: 20 }}>מילה {index + 1} מתוך {session.length}</h2>
-      <div className="large-icon">{q.wordObj.icon}</div>
+      <div className="large-icon-group">
+        {q.wordObj.photos.map((photo, idx) => (
+          <span key={`${photo}-${idx}`} className="large-icon">
+            {photo}
+          </span>
+        ))}
+      </div>
       <div style={{ fontSize: 32, marginBottom: 8 }}>{q.wordObj.hebPron}</div>
       <div style={{ fontSize: 24, marginBottom: 16 }}>{q.wordObj.he}</div>
-      <button onClick={() => speak(q.wordObj.en)} className="primary-button" style={{ fontSize: 18, marginBottom: 24 }}>
-        🔊 השמע
-      </button>
+      <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginBottom: 24 }}>
+        {q.wordObj.audios.map((audio, idx) => (
+          <button
+            key={`${audio}-${idx}`}
+            onClick={() => speak(audio)}
+            className="primary-button"
+            style={{ fontSize: 18 }}
+          >
+            🔊 השמע{q.wordObj.audios.length > 1 ? ` ${idx + 1}` : ""}
+          </button>
+        ))}
+      </div>
       <div dir="ltr" className="masked-word">
         {q.masked.split("").map((ch, i) =>
           ch === "_" ? (

@@ -308,6 +308,13 @@ button:focus-visible {
   font-size: 100px;
 }
 
+.large-icon-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
 .hebrew-word {
   font-size: 64px;
 }
